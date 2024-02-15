@@ -2,12 +2,13 @@
 namespace App\Enums;
 
 enum Role: int
+
 {
-    case SuperAdministrator = 1;
-    case Moderator = 2;
-    case FarmerManager = 3;
-    case MarketingManager = 4;
-    case SalesManager = 5;
-    case AuctionManager = 6;
-    case Customer = 7;
+    case ProjectManager = 1;
+    case SiteEngineer = 2;
+    case Architect = 3;
+    case Foreman = 4;
+    case Estimator = 5;
+    case SafetyOfficer = 6;
+    case Laborer = 7;
 }

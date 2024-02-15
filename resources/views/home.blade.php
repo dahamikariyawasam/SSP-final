@@ -146,19 +146,22 @@ https://templatemo.com/tm-591-villa-agency
             <div class="accordion-item">
               <h4>House For Sale 🏡 Dehiwala, Nadimala</h4>
              </div>
-            <div class="accordion-item">
-              <p>
-                4 Story - Completed House (9.7p) <br>
-               🔹Bed Rooms - 4<br>
-                🔹Bath Rooms - 5<br>
-                🔹Servant & Driver Room<br>
-                🔸Large Living & Dinning<br>
-                🔸Pantry & Kitchen<br>
-                🔸T/V Room & Bar<br>
-                 ▪️Elevator for all floors<br>
-                  ▪️Basement Parking  - 4 Vehicles<br>
-              </p>
-            </div>
+             <div class="accordion-item">
+    <p>
+        <font color="black">
+            4 Story - Completed House (9.7p) <br>
+            🔹Bed Rooms - 4<br>
+            🔹Bath Rooms - 5<br>
+            🔹Servant & Driver Room<br>
+            🔸Large Living & Dinning<br>
+            🔸Pantry & Kitchen<br>
+            🔸T/V Room & Bar<br>
+            ▪️Elevator for all floors<br>
+            ▪️Basement Parking  - 4 Vehicles<br>
+        </font>
+    </p>
+</div>
+
             
             
           </div>
@@ -223,7 +226,7 @@ https://templatemo.com/tm-591-villa-agency
             <div class="row">
               <div class="col-lg-4">
                 <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="37" data-speed="1000"></h2>
+                  <h2 class="timer count-title count-number" data-to="78" data-speed="1000"></h2>
                    <p class="count-text ">Buildings<br>Finished Now</p>
                 </div>
               </div>
