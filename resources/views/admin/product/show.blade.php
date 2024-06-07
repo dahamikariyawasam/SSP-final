@@ -19,7 +19,7 @@
       <h2 class="text-2xl font-semibold leading-tight">Properties</h2>
       <a href="{{url('creste')}}">
       <button class="1">Add Properties</button></a>
-    
+
     </div>
     <div class="mt-4">
       <div class="overflow-x-auto">
@@ -48,13 +48,14 @@
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{$productss->address}}</td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{$productss->price}}</td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{$productss->description}}</td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{$productss->image}}</td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">                <img src="{{ asset('images/' . $productss->image) }}" alt="{{ $productss->MainCity }}" style="width: 100px; height: auto; margin-top: 10px;">
+                </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <button class="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-700">Edit</button>
-                                  <style>
+ <a href="{{ url('edit', $productss->id) }}" class="btn btn-primary">Edit</a>
+               <style>
 
-                                    
-                  
+
+
   .bg-red-500 {
     background-color: #f56565; /* Example red color */
   }
@@ -80,7 +81,7 @@
 <button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-700">Delete</button>
 
               </tr>
-             
+
 @endforeach
 
 
@@ -93,7 +94,6 @@
   </div>
 </div>
 
-S
 
 
 </x-admin-layout>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\Product;
+use App\Models\Property;
 
 class ProductController extends Controller
 {
@@ -70,41 +71,40 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
-    {
-        return view('product.edit', compact('product'));
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, $id)
     {
-        $product->MainCity = $request->input('MainCity');
-        $product->slug = Str::slug($request->input('slug'));
-        $product->address = $request->input('address');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
+        $request->validate([
+            'MainCity' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-        // Update image if a new one is uploaded
+        $item = Product::findOrFail($id);
+
+        $item->MainCity = $request->MainCity;
+        $item->slug = $request->slug;
+        $item->address = $request->address;
+        $item->price = $request->price;
+        $item->description = $request->description;
+
         if ($request->hasFile('image')) {
-            // Delete old image
-            if ($product->image != 'noimage.jpg') {
-                Storage::delete('uploads/product/' . $product->image);
-            }
-
-            // Save new image
-            $image = $request->file('image');
-            $extension = $image->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $image->move('uploads/product/', $filename);
-            $product->image = $filename;
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $item->image = $imageName;
         }
 
-        $product->save();
-        return redirect()->route('products.index')->with('success', 'Product updated successfully');
-    }
+        $item->save();
 
+        return redirect()->back()->with('success', 'Item update successfully.');
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -113,7 +113,7 @@ class ProductController extends Controller
         if ($product->image != 'noimage.jpg') {
             Storage::delete('uploads/product/' . $product->image);
         }
-        
+
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
     }
@@ -122,12 +122,12 @@ class ProductController extends Controller
     {
         $query = $request->input('query');
         $products = Product::all();
-        $properties = Property::where('MainCity', 'LIKE', "%{$query}%")->get();
+        $properties = Product::where('MainCity', 'LIKE', "%{$query}%")->get();
         return view('properties', compact('properties', 'products'));
     }
 
 
-    
+
     public function searchproduct(Request $request)
 {
     $search = $request->search;
@@ -145,6 +145,11 @@ $res = Product::select("MainCity")
 return response()->json($res);
 
 
+}
+public function edit($id)
+{
+    $product = Product::findOrFail($id);
+    return view('admin.product.edit', compact('product'));
 }
 
 }
