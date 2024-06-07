@@ -52,7 +52,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $user = User::all();
+        return view('admin.users.show', compact('users'));
     }
 
     /**
@@ -90,5 +91,14 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('user.index')->with('success', 'User successfully deleted!');
+    }
+
+    public function dashboard()
+    {
+        // Fetch all users
+        $users = User::all();
+
+        // Pass users data to the view
+        return view('admin.dashboard', compact('users'));
     }
 }

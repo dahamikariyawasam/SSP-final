@@ -19,13 +19,7 @@
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-<!--
 
-TemplateMo 591 villa agency
-
-https://templatemo.com/tm-591-villa-agency
-
--->
   </head>
 
 <body>
@@ -77,10 +71,9 @@ https://templatemo.com/tm-591-villa-agency
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li><a href="index.html" class="active">Home</a></li>
-                      <li><a href="properties.html">Properties</a></li>
-                      <li><a href="property-details.html">Property Details</a></li>
-                      <li><a href="contact.html">Contact Us</a></li>
+                      <li><a href="{{ url('/') }}" class="{{ Request::is('/') ? 'active' : '' }}">Home</a></li>
+                      <li><a href="{{ url('properties') }}">Properties</a></li>
+                      <li><a href="{{ url('contact') }}">Contact Us</a></li>
                       
                       <li> @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
@@ -274,7 +267,7 @@ https://templatemo.com/tm-591-villa-agency
               <li>Parking: <span>4 spots</span></li>
             </ul>
             <div class="main-button">
-              <a href="contact.html">Contact Us</a>
+            <li><a href="{{ url('contact') }}">Contact Us</a></li>
             </div>
           </div>
         </div>
@@ -293,7 +286,7 @@ https://templatemo.com/tm-591-villa-agency
               <li>Parking: <span>6 spots</span></li>
             </ul>
             <div class="main-button">
-              <a href="property-details.html">Contact Us</a>
+            <li><a href="{{ url('contact') }}">Contact Us</a></li>
             </div>
           </div>
         </div>
@@ -312,7 +305,7 @@ https://templatemo.com/tm-591-villa-agency
               <li>Parking: <span>4 spots</span></li>
             </ul>
             <div class="main-button">
-              <a href="property-details.html">Contact Us</a>
+            <li><a href="{{ url('contact') }}">Contact Us</a></li>
             </div>
           </div>
         </div>      
@@ -349,7 +342,7 @@ https://templatemo.com/tm-591-villa-agency
               <li>Parking: <span>1 spots</span></li>
             </ul>
             <div class="main-button">
-              <a href="property-details.html">Contact Us</a>
+            <li><a href="{{ url('contact') }}">Contact Us</a></li>
             </div>
           </div>
         </div>
@@ -368,7 +361,7 @@ https://templatemo.com/tm-591-villa-agency
               <li>Parking: <span>3 spots</span></li>
             </ul>
             <div class="main-button">
-              <a href="property-details.html">Contact Us</a>
+            <li><a href="{{ url('contact') }}">Contact Us</a></li>
             </div>
           </div>
         </div>
@@ -387,7 +380,7 @@ https://templatemo.com/tm-591-villa-agency
               <li>Parking: <span>10 spots</span></li>
             </ul>
             <div class="main-button">
-              <a href="property-details.html">Contact Us</a>
+            <li><a href="{{ url('contact') }}">Contact Us</a></li>
             </div>
           </div>
         </div>      
