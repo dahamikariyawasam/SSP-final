@@ -29,10 +29,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('home');
+    // })->name('dashboard');
 
+    Route::get('/dashboard', [ProductController::class, 'indexnew'])->name('dashboard');
     Route::resource(
        'product-category',
         \App\Http\Controllers\ProductCategoryController::class
@@ -44,6 +45,7 @@ Route::middleware([
     );
 });
 Route::GET('/properties', 'App\Http\Controllers\ProductController@index');
+Route::GET('/dd', 'App\Http\Controllers\ProductController@in');
 
 // Route for properties (accessible to all users)
 

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Property;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ProductController extends Controller
 {
@@ -67,7 +69,23 @@ class ProductController extends Controller
         return view('admin.product.show', compact('products'));
 
     }
+    public function in()
+    {
+        
+        return view('dashboard');
 
+    }
+    public function indexnew()
+    {
+        $user = Auth::user();
+        $role = Auth::user()->role->value;
+        $users = User::all();
+        if ($role  == 1) {
+            return view('admin.user.all', compact('users'));
+        } else {
+            return view('home');
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      */
